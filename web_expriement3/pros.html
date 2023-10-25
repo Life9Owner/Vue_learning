@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/vue.js"></script>
+    <title>Template and Props Test</title>
+</head>
+<body>
+    <div id="app">
+        <student v-for="student in students" :key="student.sid" :name="student.name" :studentid="student.sid"></student>
+    </div>
+    <template id="student-template">
+        <div>
+            <p>Name: {{ name }}</p>
+            <p>Student ID: {{ studentid }}</p>
+        </div>
+    </template>
+    <script>
+        var studentComponent = {
+            template: "#student-template",
+            props: ['name', 'studentid']
+        }
+
+        const app = Vue.createApp({
+            data() {
+                return {
+                    students: [
+                        {name: "邹嘉豪", sid: '202112900329'},
+                        {name: "小民", sid: '231203203203'}
+                    ]
+                }
+            },
+            components: {
+                student: studentComponent
+            }
+        })
+
+        app.mount("#app");
+    </script>
+</body>
+</html>
