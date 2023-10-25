@@ -9,6 +9,7 @@
 <body>
     <div id="app">
         <student v-for="student in students" :key="student.sid" :name="student.name" :studentid="student.sid"></student>
+        <!-- use the template -->
     </div>
     <template id="student-template">
         <div>
@@ -19,7 +20,7 @@
     <script>
         var studentComponent = {
             template: "#student-template",
-            props: ['name', 'studentid']
+            props: ['name', 'studentid']//get the data from parent component.
         }
 
         const app = Vue.createApp({
@@ -32,11 +33,43 @@
                 }
             },
             components: {
-                student: studentComponent
+                student: studentComponent//register a component
             }
         })
 
-        app.mount("#app");
+        app.mount("#app");//mount the div 
     </script>
 </body>
 </html>
+
+<!-- /* At the beginning ,I get very confused on the componens,the gpt4 helps me a lot.*/ -->
+<!-- 
+    My question:
+    Here the code just define a 'student' that doesn't appear it in the front it ,what does it mean?
+    components: {
+    student: studentComponent//register a component
+} -->
+    <!-- Its answer:
+In the Vue.js code you provided, the components property inside the Vue app is used to register a component locally to that Vue instance.
+ Here's a breakdown of how this works:
+
+You've created a template with the ID student-template. 
+This template will be used as the layout for the student component.
+You then define a component object named studentComponent:
+javascript
+(1)
+var studentComponent = {
+    template: "#student-template",
+    props: ['name', 'studentid']
+}
+
+This component uses the #student-template for its layout and has two props: name and studentid.
+
+Within the main Vue app instance, you're registering this component with the name student:
+(2)
+javascript
+components: {
+    student: studentComponent
+}
+This means that within the Vue instance's template (the part inside <div id="app">...</div>),
+ you can now use <student> as a tag to insert an instance of the studentComponent into the DOM. -->
