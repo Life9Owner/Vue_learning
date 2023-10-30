@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id ="app">
+        <div>
+            <p class="bigFont">添加要购买的商品：</p>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="textRight">商品后台编号：</td>
+                        <td>
+                            <input type="text" name = 'id' v-model = 'good.id'
+                             placeholder="请填写商品编号">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="textRight">商品名称：</td>
+                        <td>
+                            <input type="text" name = 'name' v-model = 'good.name'
+                            placeholder="请填写商品名称">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="textRight">商品价格：</td>
+                        <td>
+                            <input type="number" name = 'price' v-model.number = 'good.price'
+                            placeholder="请填写商品价格">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="textRight">商品数量：</td>
+                        <td>
+                            <input type="number" name = 'count' v-model.number = 'good.count'
+                            placeholder="请填写商品数量">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="textRight"><button @click = 'addGood'>添加</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mtop30">
+            <p class="bigFont">购物车：</p>
+            <div v-if="goods.length >0 ">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>商品名称</th>
+                            <th>价格</th>
+                            <th>购买数量</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for = "(item, index) in goods" v-bind:key = 'item.id' >
+                            <td>{{index + 1}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{twoFixed(item.price)}}</td>
+                            <td>
+                                <button @click='decrease(index)' v-bind:disabled = 'disabledDecrease(index)'>-</button>
+                                 {{item.count}} 
+                                 <button @click='increase(index)'>+</button>
+                            </td>
+                            <td><button v-on:click="deleteGood(index)">移除</button></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">总价格: {{twoFixed(totalPrice)}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div v-else>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>商品名称</th>
+                            <th>价格</th>
+                            <th>购买数量</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="5">购物车为空!</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="./main.js"></script>
+</body>
+
+</html>
