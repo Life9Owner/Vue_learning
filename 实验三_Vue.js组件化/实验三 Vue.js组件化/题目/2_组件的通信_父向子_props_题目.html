@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    
+    <template id="zoujiahao">
+        
+        <div>
+            
+            <p>Name: {{student.name}}</p>
+            <p>数学成绩: {{ student.mathscore }}</p>
+            <p>语文成绩: {{ student.chinesescore }}</p>
+            <p>英语成绩: {{ student.englishscore }}</p>
+        </div>
+    </template>
+        <div id ="app">
+
+            <!-- <h1>知识点: 组件的通信-props</h1>
+            <h1>题目要求: 第一题中我们定义了一个infocpn组件。<br>
+                在此基础上, vue的根组件(根实例)的data中有一个student对象。<br>
+                请把student对象的信息通过props传到自定义组件中,并进行相应替换
+            </h1>
+            <h3>说明: <br>
+                      (1)这里假设只有一个student,所以只要使用一次组件即可。<br>
+                      (2)相应替换的意思是组件中姓名应该等于传进去的student的姓名,成绩也一样<br>
+                      (3)vue根实例中data中的student的姓名改成自己的名字。
+                       效果参考ppt。
+            </h3> -->
+            <div>
+                <h1 style="color: red;">-------------------------------------------------------</h1>
+                <!--在下面使用自己定义的组件-->
+                <Cpn1 :student="student"></Cpn1>
+            </div>
+    
+        </div>
+
+    
+
+    <script>
+        var usecase={
+            template:"#zoujiahao",
+            props:["student"]
+        }
+        //创建Vue实例，得到ViewModel
+        const vm = Vue.createApp({
+            data(){
+                return{
+                    student:{
+                    name: "邹嘉豪",
+                    mathscore: 100,
+                    chinesescore: 100,
+                    englishscore : 99
+                    }
+                }
+            },
+            components:{
+                'Cpn1':usecase
+            },
+           
+
+            
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Component Communication</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <template id="zoujiahao">
+        
+        <div>
+            
+            <p>Name: {{student.name}}</p>
+            <p>数学成绩: {{ student.mathscore }}</p>
+            <p>语文成绩: {{ student.chinesescore }}</p>
+            <p>英语成绩: {{ student.englishscore }}</p>
+        </div>
+    </template>
+    <template id="infoCpn">
+        <div>
+            <button @click="sendInfo">反馈</button>
+        </div>
+    </template>
+
+    <div id="app">
+       
+        <Cpn1 :student="student"></Cpn1>
+        <div>
+            <h1 style="color: red;">-------------------------------------------------------</h1>
+            <h2>{{ displayInfo }}</h2>
+            <info-cpn @info-sent="handleInfo"></info-cpn>
+        </div>
+    </div>
+
+    <script>
+        const InfoCpn = {
+            template: '#infoCpn',
+            data() {
+                return {
+                    message: '成绩有误!'
+                };
+            },
+            methods: {
+                sendInfo() {
+                    this.$emit('info-sent', this.message);
+                }
+            }
+        };
+        var usecase={
+            template:"#zoujiahao",
+            props:["student"]
+        }
+        const vm = Vue.createApp({
+            data() {
+                return {
+                    displayInfo: '最后请展示在这里',
+                    student: {
+                        name: '邹嘉豪',
+                        mathscore: 100,
+                        chinesescore: 100,
+                        englishscore: 99
+                    }
+                };
+            },
+            methods: {
+                handleInfo(msg) {
+                    this.displayInfo = msg;
+                }
+            },
+            components: {
+                'info-cpn': InfoCpn,
+                'Cpn1':usecase
+            }
+        }).mount("#app");
+    </script>
+</body>
+</html>

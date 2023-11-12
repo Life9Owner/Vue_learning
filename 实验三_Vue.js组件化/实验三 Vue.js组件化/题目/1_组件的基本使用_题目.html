@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <template id="zoujiahao">
+        <div>
+            <p>Name: {{ name }}</p>
+            <p>Student ID: {{ studentid }}</p>
+            <p>数学成绩:99</p>
+            <p>语文成绩:90</p>
+            <p>英语成绩:95</p>
+        </div>
+    </template>
+    <div id="app">
+        <!-- <h1>知识点: 组件的基本使用</h1>
+        <h1>步骤:1.定义; 2.注册; 3.使用</h1>
+        <h1>题目要求: 定义一个组件, 名为infocpn。包含(1)学生信息:自己的名字+学号 (2)数学成绩:99 (3)语文成绩:90 (4)英语成绩:95</h1> -->
+        <!-- <h3>说明: <br>
+                (1)组件可以采取全局注册, 也可以采取局部注册。<br>
+                (2)必须使用template标签,即必须模板分离<br>
+                 (3)infocpn对应的姓名,成绩写死即可。<br>
+                 (4)在下面的div中使用自己定义的组件3次。<br>
+                   效果参考ppt。
+        </h3> -->
+        <div>
+            <h1 style="color: red;">-------------------------------------------------------</h1>
+            <!--在下面使用自己定义的组件-->
+            <Cpn1 :name="name" :studentid="sid"></Cpn1>
+            <Cpn1 :name="name" :studentid="sid"></Cpn1>
+            <Cpn1 :name="name" :studentid="sid"></Cpn1>
+
+        </div>
+    </div>
+
+    <script>
+        var usecase={
+            template: "#zoujiahao",
+            props: ['name', 'studentid']
+        }
+        //创建Vue实例，得到ViewModel
+        const vm = Vue.createApp({
+            data()
+            {
+                return {
+                    
+                        name: "邹嘉豪", 
+                        sid: '202112900329'
+                    
+                }
+            },
+            components:{
+                Cpn1:usecase
+            }
+
+        }).mount("#app");
+    </script>
+</body>
+</html>
