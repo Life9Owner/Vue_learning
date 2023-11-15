@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ref</title>
+    <script src="https://unpkg.com/vue@next"></script>
+
+</head>
+<body>
+    <div id="app">
+         <div ref="mydiv">{{greet}}</div>
+         <button @click="getElementHandel">click here!</button>
+
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return {
+                    greet:'Hello!'
+                }
+            },
+            methods: {
+                getElementHandel(){
+                    this.$refs.mydiv.innerHTML="Reference test";
+                    console.log(this.$refs.mydiv);
+                }
+            },
+        }).mount("#app")
+    </script>
+</body>
+</html>
