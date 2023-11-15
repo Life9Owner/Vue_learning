@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-model</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+        .stress{
+            color:red
+        }
+        .green{
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+    <h3>
+        <p>Using v-bind and v-on <p class="stress">together</p> , we can create two-way bindings on form input elements:
+        template:
+        <p class="green">input :value="text" @input="onInput"</p>
+        <p>methods: {
+            <p>onInput(e) {</p>
+                <p> // a v-on handler receives the native DOM event</p>
+                <p>// as the argument.</p>
+                <p>this.text = e.target.value</p>
+            }</p>
+          }</p>
+    </p>
+    <p class="stress">To simplify </p>
+    <p> bindings, Vue provides a directive, v-model, which is essentially a syntax sugar for the above:</p>
+    </h3>
+    <input v-model="text" placeholder="type here">
+    <p>{{text}}</p>
+</div>
+    
+</body>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                text:''
+            }
+        },
+        methods: {
+            
+        },
+    }).mount("#app");
+</script>
+</html>

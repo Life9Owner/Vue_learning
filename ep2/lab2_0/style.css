@@ -18,10 +18,13 @@ th {
 }
 
 .bigFont {
-    font-size: 20px;
-    font-style: 600;
+    
+    font: 20px "微软雅黑";/*设置字体和字体大小*/
+    margin:50px auto; /*设置元素外边距*/
+    font-weight: 500; /*设置字体粗细*/
+    color: #f35626; /*设置文字颜色*/
+   
 }
-
 .mtop30{
     margin-top: 30px;
 }

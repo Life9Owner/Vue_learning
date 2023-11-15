@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+        #red{
+            background-color: greenyellow
+        }
+        .large{
+            font-size :30px;
+        }
+        .title{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p>
+        Attribute Bindings
+        In Vue, mustaches are only used for text interpolation. 
+        To bind an attribute to a dynamic value, we use the v-bind directive:
+        template
+        <p id="red" class="large">div v-bind:id="dynamicId"</p>
+        </p> 
+        <!-- <div class="title">Make me red</div>    -->
+        <h1 :class="titleClass">Make me red</h1>
+    </div>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return {
+                titleClass:'title'
+            }
+        }
+    }).mount("#app");
+</script>
+</body>
+</html>
