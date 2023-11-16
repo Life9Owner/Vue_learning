@@ -45,6 +45,9 @@
     const lowOrHi=document.querySelector(".lowOrHi");
     let guessCount=1;
     let resetButton;
+
+    guessField.focus();
+    
     function resetGame1()
     {
         guessCount=1;
@@ -85,6 +88,7 @@
 
     }
     guessSubmit.addEventListener("click",checkGuess);
+
     function setGameOver() 
     {
         guessField.disabled = true;
