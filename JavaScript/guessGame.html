@@ -15,7 +15,7 @@
 
     </head>
     <body>
-        <div>
+        <div class="resultParas">
             <p class="guesses"></p>
             <p class="lastResult"></p>
             <p class="lowOrHi"></p>
@@ -42,10 +42,16 @@
     const guessSubmit=document.querySelector(".guessSubmit");
     const guessField = document.querySelector(".guessField");
     //forget to define guessField ,it still works as uaual.
-    
-    
     const lowOrHi=document.querySelector(".lowOrHi");
     let guessCount=1;
+    let resetButton;
+    function resetGame1()
+    {
+        guessCount=1;
+        lastResult.value="";
+        guessField.disabled=false;
+        guessSubmit.disabled=false;
+    }
     function checkGuess()
     {
         const userGuess=Number(guessField.value);
