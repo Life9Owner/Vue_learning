@@ -66,12 +66,15 @@
             const lastResult=document.querySelector(".lastResult");
             const guessSubmit=document.querySelector(".guessSubmit");
             const guessField = document.querySelector(".guessField");
-            //forget to define guessField ,it still works as uaual.
+            //forget to define guessField ,it still works as usual.
             const lowOrHi=document.querySelector(".lowOrHi");
             let guessCount=1;
             let resetButton;
-        
-            guessField.focus();//can't work
+            function init()
+            {
+                guessField.focus();//can't work
+            }
+           
             
             function resetGame1()
             {
@@ -89,10 +92,10 @@
                 }
                 guesses.textContent += `${userGuess} `;
                 if (userGuess === randomNumber) {
-                lastResult.textContent = "Congratulations! You got it right!";
-                lastResult.style.backgroundColor = "green";
-                lowOrHi.textContent = "";
-                setGameOver();
+                        lastResult.textContent = "Congratulations! You got it right!";
+                        lastResult.style.backgroundColor = "green";
+                        lowOrHi.textContent = "";
+                        setGameOver();
                     } else if (guessCount === 4) {
                         lastResult.textContent = "!!!GAME OVER!!!";
                         lowOrHi.textContent = "";

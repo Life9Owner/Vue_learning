@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bubble</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+
+    <div @click.capture="click1" style="border:solid red" >
+        out
+        <div @click.capture="click2" style="border:solid red">
+            midddle
+            <div @click.capture="click3" style="border:solid red">
+                    click
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return {
+                    count:0
+                }
+            },
+            methods:{
+                click(step){
+                    this.count+=step;
+                },
+                log(event)
+                {
+                    console.log(event);
+                },
+                click1(){
+                    console.log("outside");
+                },
+                click2(){
+                    console.log("middle side");
+                },
+                click3(){
+                    console.log("inside");
+                }
+                
+
+            }
+        }).mount("#app");
+    </script>
+</body>
+</html>
